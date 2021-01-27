@@ -1,0 +1,25 @@
+
+.img{
+    display: flex;
+    flex-direction: left;
+    margin-top: 50px;
+    margin-left: 30px;
+}
+
+.car{
+    width: 40rem;
+    margin-right: 30px;
+    margin-left: 30px;
+
+}
+
+.list{
+    margin-left: 50px;
+    width: 70%;
+}
+
+.details{
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+}

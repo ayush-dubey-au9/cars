@@ -1,0 +1,23 @@
+.btn{
+    margin-top: 5%;
+}
+
+.main{
+    display: grid;
+    place-content: center;
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+}
+
+.img{
+    width: 24rem;
+    height: 15rem;
+}
+
+.card{
+margin-right: 15px;
+}
+
