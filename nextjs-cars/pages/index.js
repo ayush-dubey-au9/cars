@@ -6,55 +6,55 @@ import Link from 'next/link'
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 
-const Index = () => {
+const Index = (props) => {
+  console.log(props.cars)
+
+  return props.cars.map(data =>{
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
+      
       <div className={styles.main}>
 
         <div className={styles.container} >
 
           <div className={styles.card}>
             <Card style={{ width: '24rem', height: '26rem' }}>
-              <Card.Img className={styles.img} variant="top" src="https://cdn.pixabay.com/photo/2015/05/15/14/46/bmw-768688_960_720.jpg" />
+              <Card.Img className={styles.img} variant="top" src={data.img_url} />
               <Card.Body>
-                <Card.Title >BMW</Card.Title>
-                <Link href="/Bmw">
+                <Card.Title >{data.make}</Card.Title>
+                <Link href={`/${data.id}`}>
                   <Button className={styles.btn} variant="primary">Learn More</Button>
                 </Link>
               </Card.Body>
             </Card>
           </div>
 
-          <div className={styles.card}>
-            <Card style={{ width: '24rem', height: '26rem' }}>
-              <Card.Img className={styles.img} variant="top" src="https://cdn.pixabay.com/photo/2015/12/04/09/33/audi-1076316_960_720.jpg" />
-              <Card.Body>
-                <Card.Title >AUDI</Card.Title>
-                <Link href="/Audi">
-                  <Button className={styles.btn} variant="primary">Learn More</Button>
-                </Link>
-              </Card.Body>
-            </Card>
-          </div>
-
-          <div className={styles.card}>
-            <Card style={{ width: '24rem', height: '26rem' }}>
-              <Card.Img className={styles.img} variant="top" src="https://cdn.pixabay.com/photo/2017/03/27/14/56/auto-2179220_960_720.jpg" />
-              <Card.Body>
-                <Card.Title >MERCEDES</Card.Title>
-                <Link href="/Mercedes">
-                  <Button className={styles.btn} variant="primary">Learn More</Button>
-                </Link>
-              </Card.Body>
-            </Card>
-          </div>
-
+        
         </div>
       </div>
-      <Footer />
+      
+      {/* <Footer /> */}
     </div>
   );
-}
 
+
+})
+    }
+
+
+
+
+
+
+export const getStaticProps = async () => {
+  const res = await fetch('https://private-anon-ae71e25743-carsapi1.apiary-mock.com/cars')
+  const cars = await res.json()
+
+  return {
+    props: {
+      cars,
+    },
+  }
+}
 export default Index;
